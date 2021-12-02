@@ -1,66 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Agenda de Contatos
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema em laravel 8 e VUEjs com Bootstrapp
 
-## About Laravel
+## Começando
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Clonando repositório do projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Requisitos necessários do sistema:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 7.4 ou >
+- MySQL
+- Composer
+- Acesso a internet
 
-## Learning Laravel
+Instalando no Linux
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+git clone https://github.com/unixlira/agenda-contatos.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Depois de clonado, vamos acessar o projeto.
 
-## Laravel Sponsors
+```
+cd agenda-contatos
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Instalando Dependências
 
-### Premium Partners
+```
+composer update
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+### Banco de dados MySQL
 
-## Contributing
+Para rodar a aplicação em ambiente local necessitamos de já ter instalado o MySQL, com isto podemos criar uma base de dados chamada `amar_assist` para manipular nossos dados do game.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Acesse o SGDB de sua preferência e crie seu banco
 
-## Code of Conduct
+```
+CREATE SCHEMA `amar_assist` ;
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Configurações
 
-## Security Vulnerabilities
+### .env
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Agora com o projeto clonado e suas dependencias instaladas e seu banco de dados também criado, vamos configurar o arquivo .env que irá guardar as credenciais do acesso ao banco.
 
-## License
+Vamos lá, pegue seu .env.exemple e renomeie para .env
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Depois insira suas credenciais de acesso ao banco de dados nesse campos.
+NOTA: No campo DB_DATABASE será inserido o Banco criado no SGBD.
+
+Por exemplo:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=amar_assist
+DB_USERNAME=seu usuario
+DB_PASSWORD=sua senha
+```
+
+Agora precisamos gerar uma chave da aplicação que fica no campo APP_KEY.
+Verifique se está dentro do diretório raiz do projeto e rode o comando para gerar a key:
+
+```
+php artisan key:generate
+```
+
+### Migração de tabelas do banco de dados
+
+Após esses passo vamos agora criar nossas tabelas do nosso banco de dados.
+
+```
+php artisan migrate
+```
+
+## Iniciando projeto
+
+Vamos iniciar nosso projeto acessando o terminal, dentro da raiz do projeto vamos rodar o comando que disponibilizará o sistema em nosso navegador.
+
+```
+php artisan serve
+```
+
+Agora para acessar nossa aplicação vamos abrir o navegador e digitar o endereço
+
+```
+http://127.0.0.1:8000
+```
+
+Abraço!
