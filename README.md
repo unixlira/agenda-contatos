@@ -31,6 +31,14 @@ Instalando Dependências
 composer update
 ```
 
+```
+npm install
+```
+
+```
+npm ci && npm run dev
+```
+
 ### Banco de dados MySQL
 
 Para rodar a aplicação em ambiente local necessitamos de já ter instalado o MySQL, com isto podemos criar uma base de dados chamada `amar_assist` para manipular nossos dados do game.
